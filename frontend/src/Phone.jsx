@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Phone(){
+function Phone({phone, setPhone}){
 
-
-    const [phone, setPhone] = useState("");
 
     const [curPhoneBuf, setCurBuf] = useState("");
     const [newNumBuf, setNewNumBuf] = useState(0);

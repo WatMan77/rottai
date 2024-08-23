@@ -90,7 +90,7 @@ function CVForm() {
         <br />
         <label>
           Phone:
-          <Phone/>
+          <Phone phone={phone} setPhone={setPhone} />
         </label>
         <br />
         <label>
