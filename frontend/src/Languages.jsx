@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const Languages = ({ langs, setLangs }) => {
+const Languages = ({ langs, setLangs, addLanguage }) => {
   const levels = [
     "Don't know",
     "Beginner",
@@ -14,7 +14,6 @@ const Languages = ({ langs, setLangs }) => {
   const handleTextChange = (index, event) => {
     const newLangs = [...langs];
     newLangs[index].lang = event.target.value;
-    console.log("New langs?", newLangs);
     setLangs(newLangs);
   };
 
@@ -56,6 +55,13 @@ const Languages = ({ langs, setLangs }) => {
             </label>
           </div>
         ))}
+        <button
+          style={{ marginBottom: "30px" }}
+          type="button"
+          onClick={addLanguage}
+        >
+          Add Language
+        </button>
       </div>
     </>
   );
