@@ -8,48 +8,30 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 
+import styled from "styled-components";
+import CVForm from "./CVForm.jsx";
+
 function Home() {
 
   return (
     <>
       
-      <h1>Rott.AI</h1>
+      <LogoText>Rott.AI</LogoText>
       
       
     </>
   );
 }
+const LogoText = styled.h1`
+  background-image: linear-gradient(90deg, #066b2e, #24119f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  width: max-content;
+`;
 
-function CVForm() {
-  return (
-    <div>
-      <h1>CV Information</h1>
-      <form>
-        <label>
-          Name:
-          <input type="text" name="name" />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" name="email" />
-        </label>
-        <br />
-        <label>
-          Phone:
-          <input type="tel" name="phone" />
-        </label>
-        <br />
-        <label>
-          Experience:
-          <textarea name="experience"></textarea>
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>CVPage
-    </div>
-  );
-}
+
 
 
 const CVPage = () => {
