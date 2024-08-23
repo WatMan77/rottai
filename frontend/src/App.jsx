@@ -7,11 +7,15 @@ import {
   StyleSheet,
   PDFViewer,
 } from "@react-pdf/renderer";
+import Background from "./assets/background.png";
 
 import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
 
+import { useEffect, useState } from "react";
+
 function Home() {
+  
   return (
     <>
       <LogoText>Rott.AI</LogoText>
@@ -123,22 +127,53 @@ const CVPage = () => {
 };
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const img = new Image();
+    img.src = Background;
+    img.onload = () => {
+      setIsLoading(false);
+    };
+  }, []);
+
+  const CustomLoader = () => {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  };
+  if (isLoading) {
+    return <CustomLoader />;
+  }
   return (
-    <Router>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/cv-form">CV Form</Link> |{" "}
-        <Link to="/cv">CV</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cv-form" element={<CVForm />} />
-        <Route path="/cv" element={<CVPage />} />
-      </Routes>
-    </Router>
+    <AppWrapper>
+      <Router>
+        <nav>
+          <Link to="/">Home</Link> | <Link to="/cv-form">CV Form</Link> |{" "}
+          <Link to="/cv">CV</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cv-form" element={<CVForm />} />
+          <Route path="/cv" element={<CVPage />} />
+        </Routes>
+      </Router>
+    </AppWrapper>
   );
 }
 
 export default App;
+
+const AppWrapper = styled.div`
+  background: url(${Background}) no-repeat center center fixed;
+  background-size: cover;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.5) ;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-width: 250px;
+`;
 
 /* 
 Try to find all the bad aspects of me that would make me a bad candidate for job based on profile. be mean and straightforward. 
