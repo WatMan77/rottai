@@ -30,7 +30,7 @@ function CVForm() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <h1>CV Information</h1>
       <form>
         <label>
