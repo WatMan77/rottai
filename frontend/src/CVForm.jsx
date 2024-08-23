@@ -8,6 +8,10 @@ function CVForm() {
 
   // Function to add a new skill with default values
   const addSkillValue = (text = "", range = 0) => {
+    if(typeof text !== "string"){
+        text = "";
+    }
+
     setSkills([...skills, { text: text, range: range }]);
   };
 
