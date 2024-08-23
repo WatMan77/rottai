@@ -29,18 +29,8 @@ function CVForm() {
     setSkills([...skills, { text: text, range: range }]);
   };
 
-  // Function to handle changes in text input for skills
-  const handleTextChange = (index, event) => {
-    const newSkills = [...skills];
-    newSkills[index].text = event.target.value;
-    setSkills(newSkills);
-  };
-
-  // Function to handle changes in range slider for skills
-  const handleRangeChange = (index, event) => {
-    const newSkills = [...skills];
-    newSkills[index].range = Number(event.target.value);
-    setSkills(newSkills);
+  const addLanguage = () => {
+    setLangs([...langs, { lang: "", level: "Don't know" }]);
   };
 
   // Function to handle form submission
@@ -176,9 +166,12 @@ function CVForm() {
           setSkills={setSkills}
           style={{ marginBottom: "30px" }}
         />
-        <Languages langs={langs} setLangs={setLangs} />
+        <Languages
+          langs={langs}
+          setLangs={setLangs}
+          addLanguage={addLanguage}
+        />
         <br />
-
         <button type="submit">Submit</button>
       </form>
     </SC.CVFormContainer>
