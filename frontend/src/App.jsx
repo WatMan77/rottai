@@ -59,3 +59,55 @@ function App() {
 }
 
 export default App;
+
+
+/* 
+Try to find all the bad aspects of me that would make me a bad candidate for job based on profile. be mean and straightforward. 
+
+Profile:
+- 2 years of exerience in IT
+- skills: python, sql
+- education: university of applied science
+
+
+example:
+Profile:
+- good in math
+- junior work experience in software dev
+- i play football
+
+Response:
+good in math -> probably introvert person, not social
+junior work experience->almost no experience in the field
+plays football->uses time to unimportant things such as football
+
+
+name
+email
+phone
+address
+linkedin
+github
+skills
+education
+experience
+hobbies
+languages
+certificates
+courses
+projects
+volunteering
+awards
+interests
+summary
+highlights
+accomplishments
+patents
+publications
+test_scores
+strengths
+weaknesses
+references
+
+
+*/
