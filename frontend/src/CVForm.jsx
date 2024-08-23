@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Skills from "./Skills.jsx";
+import Phone from "./Phone.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 
 function CVForm() {
@@ -95,6 +96,7 @@ function CVForm() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
+          <Phone/>
         </label>
         <br />
         <label>
