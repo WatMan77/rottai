@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import {
   Page,
   Text,
@@ -12,13 +12,9 @@ import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
 
 function Home() {
-
   return (
     <>
-      
       <LogoText>Rott.AI</LogoText>
-      
-      
     </>
   );
 }
@@ -30,9 +26,6 @@ const LogoText = styled.h1`
   -webkit-text-fill-color: transparent;
   width: max-content;
 `;
-
-
-
 
 const CVPage = () => {
   const styles = StyleSheet.create({
@@ -129,13 +122,12 @@ const CVPage = () => {
   return <Cv />;
 };
 
-
-
 function App() {
   return (
     <Router>
       <nav>
-        <Link to="/">Home</Link> | <Link to="/cv-form">CV Form</Link> | <Link to="/cv">CV</Link>
+        <Link to="/">Home</Link> | <Link to="/cv-form">CV Form</Link> |{" "}
+        <Link to="/cv">CV</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -147,7 +139,6 @@ function App() {
 }
 
 export default App;
-
 
 /* 
 Try to find all the bad aspects of me that would make me a bad candidate for job based on profile. be mean and straightforward. 
@@ -199,4 +190,3 @@ references
 
 
 */
-
