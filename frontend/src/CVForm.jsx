@@ -20,8 +20,7 @@ function CVForm() {
 
   // Function to add a new skill with default values
   const addSkillValue = (text = "", range = 0) => {
-    if(typeof text !== "string")
-        text ="";
+    if (typeof text !== "string") text = "";
 
     setSkills([...skills, { text: text, range: range }]);
   };
@@ -165,31 +164,6 @@ function CVForm() {
         </label>
         <br />
         <label>Skills:</label>
-        <div id="skills">
-          {/* Render each skill with text input and slider */}
-          {skills.map((skill, index) => (
-            <div key={index} style={{ marginBottom: "30px" }}>
-              <input
-                type="text"
-                value={skill.text}
-                onChange={(e) => handleTextChange(index, e)}
-                placeholder="Skill name"
-              />
-              <br />
-              <input
-                type="range"
-                min="0"
-                max="5"
-                step="0.001"
-                value={skill.range}
-                onChange={(e) => handleRangeChange(index, e)}
-              />
-              <br />
-              <span>{skill.range}/5</span> {/* Display current range value */}
-              <br />
-            </div>
-          ))}
-        </div>
         <Skills
           addSkillValue={addSkillValue}
           skills={skills}
@@ -197,14 +171,6 @@ function CVForm() {
           style={{ marginBottom: "30px" }}
         />
         <Languages langs={langs} setLangs={setLangs} />
-        <br />
-        <button
-          style={{ marginBottom: "30px" }}
-          type="button"
-          onClick={() => addSkillValue()}
-        >
-          Add Skill
-        </button>
         <br />
 
         <button type="submit">Submit</button>
