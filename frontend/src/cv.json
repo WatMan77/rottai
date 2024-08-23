@@ -1,0 +1,26 @@
+{
+  "basics": {
+    "name": "string",
+    "age": "string",
+    "email": "string",
+    "profile": "string",
+    "address": "string"
+  },
+  "experience": {
+    "hobbies": ["string"],
+    "exp": ["string"],
+    "skills": [
+      {
+        "desc": "string",
+        "rating": 3
+      }
+    ],
+    "languages": [
+      {
+        "language": "string",
+        "profieciency": "string"
+      }
+    ],
+    "highlights": ["string"]
+  }
+}
