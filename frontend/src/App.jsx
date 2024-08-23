@@ -8,17 +8,27 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 
+import styled from "styled-components";
+
 function Home() {
 
   return (
     <>
       
-      <h1>Rott.AI</h1>
+      <LogoText>Rott.AI</LogoText>
       
       
     </>
   );
 }
+const LogoText = styled.h1`
+  background-image: linear-gradient(90deg, #066b2e, #24119f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  width: max-content;
+`;
 
 function CVForm() {
   return (
