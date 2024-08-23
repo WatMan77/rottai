@@ -18,26 +18,38 @@ const App = () => {
       padding: 30,
       fontSize: 12,
       lineHeight: 1.5,
+      backgroundColor: "#f9f9f9", // Light gray background for the page
     },
     section: {
-      marginBottom: 10,
+      marginBottom: 20, // Increased space between sections
     },
     header: {
-      fontSize: 20,
+      fontSize: 24,
       marginBottom: 10,
       fontWeight: "bold",
+      textAlign: "center", // Center align the header
+      color: "#2C3E50", // Dark color for the header text
     },
     subheader: {
-      fontSize: 14,
-      marginBottom: 5,
+      fontSize: 16,
+      marginBottom: 10,
       fontWeight: "bold",
+      color: "#2980B9", // Blue color for subheaders
     },
     text: {
-      marginBottom: 5,
+      marginBottom: 10,
+      lineHeight: 1.6,
+      color: "#34495E", // Dark gray color for the text
+    },
+    sectionHeader: {
+      padding: 10,
+      borderRadius: 5,
+      backgroundColor: "#ecf0f1", // Light gray background for section headers
+      border: "1px solid #bdc3c7", // Border for section headers
     },
   });
 
-  return (
+  const Cv = () => (
     <PDFViewer style={styles.viewer}>
       {" "}
       {/* Apply the viewer style here */}
@@ -45,10 +57,11 @@ const App = () => {
         <Page style={styles.page}>
           {/* Header */}
           <View style={styles.section}>
-            <Text style={styles.header}>John Doe</Text>
+            <Text style={styles.header}>John Doe asiduaohds</Text>
             <Text style={styles.text}>
               john.doe@example.com | +123 456 7890 | www.johndoe.com
             </Text>
+            <p>How about this?</p>
           </View>
 
           {/* Experience */}
@@ -85,6 +98,8 @@ const App = () => {
       </Document>
     </PDFViewer>
   );
+
+  return <Cv />;
 };
 
 export default App;
