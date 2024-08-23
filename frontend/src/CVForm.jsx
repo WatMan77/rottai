@@ -90,12 +90,6 @@ function CVForm() {
         <br />
         <label>
           Phone:
-          <input
-            type="tel"
-            name="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
           <Phone/>
         </label>
         <br />
