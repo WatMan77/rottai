@@ -1,35 +1,105 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  PDFViewer,
+} from "@react-pdf/renderer";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const styles = StyleSheet.create({
+    viewer: {
+      width: "100%", // Take up all available width
+      height: "100vh", // Take up all available height
+    },
+    page: {
+      fontFamily: "Helvetica",
+      padding: 30,
+      fontSize: 12,
+      lineHeight: 1.5,
+      backgroundColor: "#f9f9f9", // Light gray background for the page
+    },
+    section: {
+      marginBottom: 20, // Increased space between sections
+    },
+    header: {
+      fontSize: 24,
+      marginBottom: 10,
+      fontWeight: "bold",
+      textAlign: "center", // Center align the header
+      color: "#2C3E50", // Dark color for the header text
+    },
+    subheader: {
+      fontSize: 16,
+      marginBottom: 10,
+      fontWeight: "bold",
+      color: "#2980B9", // Blue color for subheaders
+    },
+    text: {
+      marginBottom: 10,
+      lineHeight: 1.6,
+      color: "#34495E", // Dark gray color for the text
+    },
+    sectionHeader: {
+      padding: 10,
+      borderRadius: 5,
+      backgroundColor: "#ecf0f1", // Light gray background for section headers
+      border: "1px solid #bdc3c7", // Border for section headers
+    },
+  });
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  const Cv = () => (
+    <PDFViewer style={styles.viewer}>
+      {" "}
+      {/* Apply the viewer style here */}
+      <Document>
+        <Page style={styles.page}>
+          {/* Header */}
+          <View style={styles.section}>
+            <Text style={styles.header}>John Doe asiduaohds</Text>
+            <Text style={styles.text}>
+              john.doe@example.com | +123 456 7890 | www.johndoe.com
+            </Text>
+            <p>How about this?</p>
+          </View>
 
-export default App
+          {/* Experience */}
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Experience</Text>
+            <Text style={styles.text}>
+              Software Developer at XYZ Corp (2019 - Present)
+            </Text>
+            <Text style={styles.text}>
+              Junior Developer at ABC Inc. (2017 - 2019)
+            </Text>
+          </View>
+
+          {/* Education */}
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Education</Text>
+            <Text style={styles.text}>
+              B.S. in Computer Science, University of Example (2013 - 2017)
+            </Text>
+          </View>
+
+          {/* Skills */}
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Skills</Text>
+            <Text style={styles.text}>JavaScript, React, Node.js, Python</Text>
+          </View>
+
+          {/* Hobbies */}
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Hobbies</Text>
+            <Text style={styles.text}>Reading, Hiking, Photography</Text>
+          </View>
+        </Page>
+      </Document>
+    </PDFViewer>
+  );
+
+  return <Cv />;
+};
+
+export default App;
