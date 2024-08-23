@@ -1,0 +1,26 @@
+{
+  "basics": {
+    "name": "",
+    "age": "",
+    "email": "",
+    "profile": "",
+    "address": ""
+  },
+  "experience": {
+    "hobbies": ["string"],
+    "exp": ["Work experiene and time worked at the end"],
+    "skills": [
+      {
+        "desc": "",
+        "rating": 3
+      }
+    ],
+    "languages": [
+      {
+        "language": "",
+        "rating": 0
+      }
+    ],
+    "highlights": ["string"]
+  }
+}
