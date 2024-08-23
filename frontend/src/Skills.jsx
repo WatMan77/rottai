@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Skills() {
+function Skills({addSkillValue, skills, setSkills}) {
   const possibleSkills = [
     "Communication",
     "Leadership",
@@ -1393,16 +1393,7 @@ function Skills() {
   ];
 
   // State to manage the list of skills (with text and slider values)
-  const [skills, setSkills] = useState([{ text: "", range: 0 }]);
 
-  // Function to add a new skill with default values
-  const addSkillValue = (text = "", range = 0) => {
-    if (typeof text !== "string") {
-      text = "";
-    }
-
-    setSkills([...skills, { text: text, range: range }]);
-  };
 
   // Function to handle changes in text input
   const handleTextChange = (index, event) => {

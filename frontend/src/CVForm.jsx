@@ -189,6 +189,8 @@ function CVForm() {
         </div>
         <Skills
           addSkillValue={addSkillValue}
+          skills={skills}
+          setSkills={setSkills}
           style={{ marginBottom: "30px" }}
         />
         <Languages langs={langs} setLangs={setLangs} />
