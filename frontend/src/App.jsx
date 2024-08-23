@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import './App.css';
 import {
   Page,
   Text,
@@ -56,7 +55,7 @@ function CVForm() {
 const CVPage = () => {
   const styles = StyleSheet.create({
     viewer: {
-      width: "100%", // Take up all available width
+      width: "100vw", // Take up all available width
       height: "100vh", // Take up all available height
     },
     page: {
