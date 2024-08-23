@@ -48,4 +48,4 @@ class Experience {
     }
 }
 
-export { CV }
+export { CV, BasicInfo, Experience }
