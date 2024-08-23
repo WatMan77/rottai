@@ -24,6 +24,10 @@ const Languages = ({ langs, setLangs, addLanguage }) => {
     setLangs(newLangs);
   };
 
+  const setDefaults = () => {
+    setLangs([{lang:"Finnish", level:"Native"},{lang:"English",level:"Intermediate"},{lang:"Swedish",level:"Don't know"}]);
+  }
+
   return (
     <>
       <div id="languages">
@@ -62,6 +66,14 @@ const Languages = ({ langs, setLangs, addLanguage }) => {
         >
           Add Language
         </button>
+        <button
+          style={{ marginBottom: "30px" }}
+          type="button"
+          onClick={setDefaults}
+        >
+          Set defaults
+        </button>
+
       </div>
     </>
   );
