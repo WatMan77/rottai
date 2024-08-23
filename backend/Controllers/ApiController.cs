@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RottAI.Models;
 using RottAI.Services;
 
 namespace RottAI.Controllers;
@@ -24,7 +25,7 @@ public class ApiController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> StartThread()
+    public async Task<IActionResult> StartThread([FromBody] CVDto CV)
     {
         var messages = await _openAIService.StartThread(Constants.RottAIConstants.InitialPrompt);
         return new OkObjectResult(messages);
