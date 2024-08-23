@@ -3,6 +3,7 @@ import Skills from "./Skills.jsx";
 import Phone from "./Phone.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
+import { SingleFileUploader } from "./fileUploader.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -17,6 +18,8 @@ function CVForm() {
   const [skills, setSkills] = useState([{ text: "", range: 0 }]);
   const [langs, setLangs] = useState([{ lang: "", level: "Don't know" }]); // Array of language objects
   const [highlights, setHighlights] = useState(""); // To be split into multiple entries if needed
+  const [pdfImage, setPdfImage] = useState(null)
+  const [imageType, setImageType] = useState(null)
 
   // Function to add a new skill with default values
   const addSkillValue = (text = "", range = 0) => {
@@ -132,6 +135,8 @@ function CVForm() {
             onChange={(e) => setProfile(e.target.value)}
           />
         </label>
+        <SingleFileUploader setBase64Image={setPdfImage} setImageType={setImageType}/>
+        <br />
         <br />
         <label>
           Hobbies:
