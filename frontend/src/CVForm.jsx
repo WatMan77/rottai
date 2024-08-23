@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Skills from "./Skills.jsx";
 import Phone from "./Phone.jsx";
+import Doxx from "./Doxx.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
@@ -115,6 +116,7 @@ function CVForm() {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
+          <Doxx setAddress={setAddress}/>
         </label>
         <br />
         <label>
