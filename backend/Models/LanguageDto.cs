@@ -6,6 +6,6 @@ public class LanguageDto
 {
     [JsonPropertyName("language")]
     public string Language { get; init; } = string.Empty;
-    [JsonPropertyName("rating")]
-    public int Rating { get; init;} = 0;
+    [JsonPropertyName("proficiency")]
+    public string Proficiency { get; init;} = string.Empty;
 }
