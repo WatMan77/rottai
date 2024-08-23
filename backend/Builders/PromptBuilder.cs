@@ -24,7 +24,7 @@ public class PromptBuilder
         _promptBuilder.AppendLine("Basic information:");
         foreach (var property in basics.GetType().GetProperties())
         {
-            _promptBuilder.AppendLine($"-{property.Name}: {property.GetValue(basics)}");
+            _promptBuilder.AppendLine($"- {property.Name}: {property.GetValue(basics)}");
         }
     }
 
