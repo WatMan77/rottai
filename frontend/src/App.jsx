@@ -173,6 +173,10 @@ const AppWrapper = styled.div`
   min-height: 100vh;
   min-height: 100dvh;
   min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 /* 

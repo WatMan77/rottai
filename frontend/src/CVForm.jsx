@@ -4,6 +4,7 @@ import Phone from "./Phone.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
+import * as SC from './CVForm.styles.js';
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -78,7 +79,7 @@ function CVForm() {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <SC.CVFormContainer>
       <h1>CV Information</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -180,7 +181,7 @@ function CVForm() {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </SC.CVFormContainer>
   );
 }
 
