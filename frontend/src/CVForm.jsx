@@ -6,6 +6,7 @@ import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
+import { useNavigate } from "react-router-dom";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -23,6 +24,8 @@ function CVForm() {
   const [pdfImage, setPdfImage] = useState(null);
   const [imageType, setImageType] = useState(null);
 
+  const navigate = useNavigate();
+
   // Function to add a new skill with default values
   const addSkillValue = (text = "", range = 0) => {
     if (typeof text !== "string") text = "";
@@ -35,7 +38,7 @@ function CVForm() {
   };
 
   // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
     // Split experience and highlights into arrays if needed
@@ -67,72 +70,85 @@ function CVForm() {
 
     // You can now use the cv object, e.g., send it to a server or display it
     console.log("CV: ", cv);
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(cv),
+    };
+    try {
+      const response = await fetch(
+        "http://localhost:5000/object/",
+        requestOptions
+      );
+      navigate("/cv", { state: { cv: response.body } });
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <SC.CVFormContainer>
       <h1>CV Information</h1>
       <form onSubmit={handleSubmit}>
         <SC.InputField>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Age:
-          <input
-            type="number"
-            name="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </label>
+          <label>
+            Age:
+            <input
+              type="number"
+              name="age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Phone:
-          <Phone phone={phone} setPhone={setPhone} />
-        </label>
+          <label>
+            Phone:
+            <Phone phone={phone} setPhone={setPhone} />
+          </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <Doxx setAddress={setAddress} />
-        </label>
+          <label>
+            Address:
+            <input
+              type="text"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <Doxx setAddress={setAddress} />
+          </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Profile:
-          <input
-            type="text"
-            name="profile"
-            value={profile}
-            onChange={(e) => setProfile(e.target.value)}
-          />
-        </label>
+          <label>
+            Profile:
+            <input
+              type="text"
+              name="profile"
+              value={profile}
+              onChange={(e) => setProfile(e.target.value)}
+            />
+          </label>
         </SC.InputField>
         <SingleFileUploader
           setBase64Image={setPdfImage}
@@ -140,53 +156,53 @@ function CVForm() {
         />
         {imageType && <img src={`${pdfImage}`} />}
         <SC.InputField>
-        <label>
-          Hobbies:
-          <input
-            type="text"
-            name="hobbies"
-            value={hobbies}
-            onChange={(e) => setHobbies(e.target.value)}
+          <label>
+            Hobbies:
+            <input
+              type="text"
+              name="hobbies"
+              value={hobbies}
+              onChange={(e) => setHobbies(e.target.value)}
+            />
+          </label>
+        </SC.InputField>
+        <SC.InputField>
+          <label>
+            Experience:
+            <textarea
+              name="experience"
+              value={experience}
+              onChange={(e) => setExperience(e.target.value)}
+              placeholder="Enter experiences, each on a new line"
+            ></textarea>
+          </label>
+        </SC.InputField>
+        <SC.InputField>
+          <label>
+            Highlights:
+            <textarea
+              name="highlights"
+              value={highlights}
+              onChange={(e) => setHighlights(e.target.value)}
+              placeholder="Enter highlights, each on a new line"
+            ></textarea>
+          </label>
+        </SC.InputField>
+        <SC.InputField>
+          <label>Skills:</label>
+          <Skills
+            addSkillValue={addSkillValue}
+            skills={skills}
+            setSkills={setSkills}
+            style={{ marginBottom: "30px" }}
           />
-        </label>
         </SC.InputField>
         <SC.InputField>
-        <label>
-          Experience:
-          <textarea
-            name="experience"
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-            placeholder="Enter experiences, each on a new line"
-          ></textarea>
-        </label>
-        </SC.InputField>
-        <SC.InputField>
-        <label>
-          Highlights:
-          <textarea
-            name="highlights"
-            value={highlights}
-            onChange={(e) => setHighlights(e.target.value)}
-            placeholder="Enter highlights, each on a new line"
-          ></textarea>
-        </label>
-        </SC.InputField>
-        <SC.InputField>
-        <label>Skills:</label>
-        <Skills
-          addSkillValue={addSkillValue}
-          skills={skills}
-          setSkills={setSkills}
-          style={{ marginBottom: "30px" }}
-        />
-        </SC.InputField>
-        <SC.InputField>
-        <Languages
-          langs={langs}
-          setLangs={setLangs}
-          addLanguage={addLanguage}
-        />
+          <Languages
+            langs={langs}
+            setLangs={setLangs}
+            addLanguage={addLanguage}
+          />
         </SC.InputField>
         <SC.Button type="submit">Submit</SC.Button>
       </form>
