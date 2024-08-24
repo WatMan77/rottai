@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import imageCompression from 'browser-image-compression';
 
 export const SingleFileUploader = ({ setBase64Image }) => {
-
+  const [file, setFile] = useState(null)
   const handleFileChange = async (event) => {
     if (event.target.files) {
       const options = {
@@ -13,6 +13,7 @@ export const SingleFileUploader = ({ setBase64Image }) => {
       }
       const fileBase64 = await toBase64(await imageCompression(event.target.files[0], options))
       setBase64Image(fileBase64);
+      setFile(event.target.files[0]);
     }
   };
 
