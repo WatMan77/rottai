@@ -59,7 +59,7 @@ function CVForm() {
       .filter((entry) => entry.trim() !== "");
 
     // Create BasicInfo and Experience objects
-    const basicInfo = new BasicInfo(name, age, email, profile, address);
+    const basicInfo = new BasicInfo(name, age, email, profile, address, phone);
 
     const experiences = new Experience(
       experienceArray,

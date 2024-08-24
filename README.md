@@ -1,8 +1,22 @@
-# React + Vite
+# RottAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was implemented for the 2024 Junction Stupid Hack hackathon. The idea is to simplify the process of creating a CV for job applications and minimize the chances of getting a job, in order to fulfill the minimum required job applications to receive unemployment benefits.
 
-Currently, two official plugins are available:
+## Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The backend is built as an ASP.NET Core application running on .NET 8 that uses Open AI's official .NET client SDK
+
+The frontend is built as a React.js app with [Bun](https://bun.sh/) as the runtime for installing dependencies.
+
+## Dependencies
+
+To run the project, [Bun](https://bun.sh/) must be installed locally, as well as [.NET 8.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
+The backend directory must contain a `.env` file, which contains your OpenAI API Key and the ID of your [Assistant](https://platform.openai.com/docs/assistants/overview) in OpenAI.
+
+The response format for the Assistant is specified in `frontend/cv.json`, which is set in the assistant with a JSON response type.
+
+## Running
+
+To run the frontend, run `bun run dev` in the `frontend` directory.
+To run the backend, rub `dotnet run` in the `backend` directory.

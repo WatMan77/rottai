@@ -4,7 +4,8 @@
     "age": "string",
     "email": "string",
     "profile": "string",
-    "address": "string"
+    "address": "string",
+    "phone": "string"
   },
   "experience": {
     "hobbies": ["string"],
