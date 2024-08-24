@@ -7,7 +7,7 @@ import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import styled from "styled-components";
-import { H1 } from "./common/Text.js";
+import { CustomInput, H1 } from "./common/Text.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -75,6 +75,7 @@ function CVForm() {
     <SC.CVFormContainer>
       <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
+        <CustomInput />
         <label>
           Name:
           <input

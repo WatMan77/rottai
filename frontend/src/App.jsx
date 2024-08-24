@@ -13,7 +13,7 @@ import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
 
 import { useEffect, useState } from "react";
-import { H1 } from "./common/Text.js";
+import { H1 } from "./common/Text.jsx";
 
 function Home() {
   
