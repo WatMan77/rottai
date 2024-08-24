@@ -23,12 +23,12 @@ const Container = styled.div`
 
 const InputLabel = styled.label`
   position: absolute;
-  top: ${(props) => (props.focused || props.hasValue ? '-20px' : '15px')};
+  top: ${(props) => (props.focused || props.hasValue ? "-20px" : "15px")};
   left: 20px;
   background: transparent;
   padding: 0 5px;
-  color: ${(props) => (props.focused ? '#007bff' : '#757575')};
-  font-size: ${(props) => (props.focused || props.hasValue ? '12px' : '16px')};
+  color: ${(props) => (props.focused ? "#007bff" : "#757575")};
+  font-size: ${(props) => (props.focused || props.hasValue ? "12px" : "16px")};
   transition: all 0.3s ease;
   pointer-events: none;
 `;
@@ -52,7 +52,8 @@ const InputField = styled.input`
   }
 `;
 
-export function CustomInput() {
+// eslint-disable-next-line react/prop-types
+export function CustomInput({ label, ...inputProps }) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
 
@@ -63,15 +64,17 @@ export function CustomInput() {
   return (
     <Container>
       <InputField
-        type="text"
-        id="custom-input"
+        {...inputProps}
         value={value}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onChange={handleChange}
+        onChange={(e) => {
+          setValue(e.target.value);
+          if (inputProps.onChange) inputProps.onChange(e); // Allow external onChange handling
+        }}
       />
       <InputLabel focused={focused} hasValue={value}>
-        MY LABEL
+        {label}
       </InputLabel>
     </Container>
   );

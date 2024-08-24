@@ -75,62 +75,47 @@ function CVForm() {
     <SC.CVFormContainer>
       <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
-        <CustomInput />
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Age:
-          <input
-            type="number"
-            name="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <br />
+        <CustomInput
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <CustomInput
+          label="Age"
+          type="number"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+
+        <CustomInput
+          label="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        {/* <CustomInput
+          label="Phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        /> */}
         <label>
           Phone:
           <Phone phone={phone} setPhone={setPhone} />
         </label>
-        <br />
-        <label>
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <Doxx setAddress={setAddress} />
-        </label>
-        <br />
-        <label>
-          Profile:
-          <input
-            type="text"
-            name="profile"
-            value={profile}
-            onChange={(e) => setProfile(e.target.value)}
-          />
-        </label>
+        
+        <CustomInput
+          label="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <Doxx setAddress={setAddress} />
+        
+        <CustomInput
+          label="Profile"
+          value={profile}
+          onChange={(e) => setProfile(e.target.value)}
+        />
+        
         <SingleFileUploader
           setBase64Image={setPdfImage}
           setImageType={setImageType}
@@ -187,4 +172,3 @@ function CVForm() {
 }
 
 export default CVForm;
-
