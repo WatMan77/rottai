@@ -18,7 +18,7 @@
     "languages": [
       {
         "language": "string",
-        "profieciency": "string"
+        "proficiency": "string"
       }
     ],
     "highlights": ["string"]

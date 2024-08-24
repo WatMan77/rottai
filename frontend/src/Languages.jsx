@@ -13,19 +13,19 @@ const Languages = ({ langs, setLangs, addLanguage }) => {
   // Function to handle changes in text input
   const handleTextChange = (index, event) => {
     const newLangs = [...langs];
-    newLangs[index].lang = event.target.value;
+    newLangs[index].language = event.target.value;
     setLangs(newLangs);
   };
 
   // Function to handle changes in range slider
   const handleLevelChange = (index, event) => {
     const newLangs = [...langs];
-    newLangs[index].level = event.target.value;
+    newLangs[index].proficiency = event.target.value;
     setLangs(newLangs);
   };
 
   const setDefaults = () => {
-    setLangs([{lang:"Finnish", level:"Native"},{lang:"English",level:"Intermediate"},{lang:"Swedish",level:"Don't know"}]);
+    setLangs([{language:"Finnish", proficiency:"Native"},{language:"English", proficiency:"Intermediate"},{language:"Swedish",proficiency:"Don't know"}]);
   }
 
   return (
@@ -37,7 +37,7 @@ const Languages = ({ langs, setLangs, addLanguage }) => {
             <label>
               Language:
               <input
-                value={lang.lang}
+                value={lang.language}
                 type="text"
                 onChange={(e) => handleTextChange(index, e)}
                 placeholder="Enter language"
@@ -47,7 +47,7 @@ const Languages = ({ langs, setLangs, addLanguage }) => {
             <label>
               Proficiency Level:
               <select
-                value={lang.level}
+                value={lang.proficiency}
                 onChange={(e) => handleLevelChange(index, e)}
               >
                 {levels.map((level, i) => (

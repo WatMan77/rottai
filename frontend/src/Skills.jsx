@@ -1396,14 +1396,14 @@ function Skills({ addSkillValue, skills, setSkills }) {
   // Function to handle changes in text input
   const handleTextChange = (index, event) => {
     const newSkills = [...skills];
-    newSkills[index].text = event.target.value;
+    newSkills[index].desc = event.target.value;
     setSkills(newSkills);
   };
 
   // Function to handle changes in range slider
   const handleRangeChange = (index, event) => {
     const newSkills = [...skills];
-    newSkills[index].range = Number(event.target.value);
+    newSkills[index].rating = Number(event.target.value);
     setSkills(newSkills);
   };
 
@@ -1415,7 +1415,7 @@ function Skills({ addSkillValue, skills, setSkills }) {
           <div key={index} style={{ marginBottom: "30px" }}>
             <input
               type="text"
-              value={skill.text}
+              value={skill.desc}
               onChange={(e) => handleTextChange(index, e)}
               placeholder="Skill name"
             />
@@ -1425,11 +1425,11 @@ function Skills({ addSkillValue, skills, setSkills }) {
               min="0"
               max="5"
               step="0.001"
-              value={skill.range}
+              value={skill.rating}
               onChange={(e) => handleRangeChange(index, e)}
             />
             <br />
-            <span>{skill.range}/5</span> {/* Display current range value */}
+            <span>{skill.rating}/5</span> {/* Display current rating value */}
             <br />
           </div>
         ))}
