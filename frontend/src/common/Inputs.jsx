@@ -6,7 +6,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  margin: 20px 0;
   width: 100%;
 `;
 
@@ -150,3 +149,16 @@ export function CustomSelect({ label, options, ...selectProps }) {
     </Container>
   );
 }
+
+export const InputsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #5b939826;
+  /* border: 1px solid #878fc5; */
+  border-radius: 8px;
+  width: 100%;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+`;

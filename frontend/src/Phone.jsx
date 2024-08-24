@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { CustomInput } from "./common/Inputs";
+import { CustomInput, InputsWrapper } from "./common/Inputs";
+import styled from "styled-components";
 
 function Phone({ phone, setPhone }) {
   const [curPhoneBuf, setCurBuf] = useState("");
@@ -36,7 +37,7 @@ function Phone({ phone, setPhone }) {
   }, []);
 
   return (
-    <>
+    <InputsWrapper>
       <div>
         <CustomInput
           label="Phone number"
@@ -48,14 +49,22 @@ function Phone({ phone, setPhone }) {
             <input type="text" value={curPhoneBuf + newNumBuf} readOnly/> */}
       </div>
 
-      <button type="button" onClick={addNumber}>
-        Add!
-      </button>
-      <button type="button" onClick={removeNumber}>
-        Wait no
-      </button>
-    </>
+      <FlexSpaceAround>
+        <button type="button" onClick={addNumber}>
+          Add!
+        </button>
+
+        <button type="button" onClick={removeNumber}>
+          Wait no
+        </button>
+      </FlexSpaceAround>
+    </InputsWrapper>
   );
 }
+
+const FlexSpaceAround = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 export default Phone;
