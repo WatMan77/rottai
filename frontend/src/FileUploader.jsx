@@ -126,6 +126,7 @@ const BigText = styled.span`
   font-size: 20rem;
   margin: 0;
   padding: 0;
+  z-index: 100;
 `;
 
 const Img = styled.img`
