@@ -4,33 +4,24 @@ import imageCompression from 'browser-image-compression';
 export const SingleFileUploader = ({ setBase64Image, setImageType }) => {
   const [file, setFile] = useState(null);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
+    if (file != null)
+      {
+          const options = {
+              maxSizeMB: 1,
+              useWebWorker: true,
+              alwaysKeepResolution: true,
+              initialQuality: 0.04,
+          }
+          const fileBase64 = await toBase64(await imageCompression(file, options))
+          setBase64Image(fileBase64);
+          setImageType(file.type);
+      }
   };
 
-  const handleUpload = async () => {
-    if (file != undefined)
-    {
-        const options = {
-            maxSizeMB: 1,
-            useWebWorker: true,
-            alwaysKeepResolution: true,
-            initialQuality: 0.04,
-        }
-        const fileBase64 = await toBase64(await imageCompression(file, options))
-        setBase64Image(fileBase64);
-        setImageType(file.type);
-    }
-  };
-
-  const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-  });
 
   return (
     <>
@@ -50,8 +41,6 @@ export const SingleFileUploader = ({ setBase64Image, setImageType }) => {
           </ul>
         </section>
       )}
-
-      {file && <button onClick={handleUpload}>Upload a file</button>}
     </>
   );
 };

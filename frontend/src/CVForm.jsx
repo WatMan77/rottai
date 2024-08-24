@@ -6,6 +6,7 @@ import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
+import * as apiService from "./apiService.js";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -35,7 +36,7 @@ function CVForm() {
   };
 
   // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
     // Split experience and highlights into arrays if needed
@@ -64,6 +65,7 @@ function CVForm() {
     );
 
     const cv = new CV(basicInfo, experiences);
+    console.log(await apiService.post(cv))
 
     // You can now use the cv object, e.g., send it to a server or display it
     console.log("CV: ", cv);
