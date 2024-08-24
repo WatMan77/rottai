@@ -7,22 +7,28 @@ import {
   Document,
   StyleSheet,
   PDFViewer,
+  Image,
 } from "@react-pdf/renderer";
 
 const CvPdf = () => {
   const location = useLocation();
 
   const [cv, setCv] = useState({ basics: {}, experience: {} });
+  const [image, setImage] = useState();
 
   useEffect(() => {
     console.log("Effecting!");
     const c = location.state?.cv;
+    const img = location.state?.image;
     if (c) {
       console.log("Effect found CV!");
       console.log(c);
       setCv(c);
     }
-  }, [cv, location.state?.cv]);
+    if (img) {
+      setImage(img);
+    }
+  }, [cv, location.state?.cv, image, location.state?.image]);
   const basics = cv.basics;
   const exp = cv.experience;
   console.log("What is experience?", cv.experience);
@@ -65,6 +71,11 @@ const CvPdf = () => {
       backgroundColor: "#ecf0f1", // Light gray background for section headers
       border: "1px solid #bdc3c7", // Border for section headers
     },
+    image: {
+      width: 100, // Adjust the width as needed
+      height: 100, // Adjust the height as needed
+      marginBottom: 20,
+    },
   });
   if (
     !cv.basics ||
@@ -78,10 +89,16 @@ const CvPdf = () => {
     <PDFViewer style={styles.viewer}>
       <Document>
         <Page style={styles.page}>
+          {/* Include Image */}
+          {image && (
+            <View style={styles.section}>
+              <Image style={styles.image} src={image} />
+            </View>
+          )}
           <View style={styles.section}>
-            <Text style={styles.header}>John Doe</Text>
+            <Text style={styles.header}>{basics.name}</Text>
             <Text style={styles.text}>
-              {basics.email} | {basics.phone}
+              {basics.email} | {basics.phone} | {basics.address}
             </Text>
           </View>
 

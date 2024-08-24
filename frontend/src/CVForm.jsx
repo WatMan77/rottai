@@ -73,7 +73,7 @@ function CVForm() {
     const response = await apiService.post(cv);
     console.log(response);
 
-    navigate("/cv", { state: { cv: response.messages[0] } });
+    navigate("/cv", { state: { cv: response.messages[0], image: pdfImage } });
 
     // You can now use the cv object, e.g., send it to a server or display it
   };
