@@ -76,61 +76,52 @@ function CVForm() {
     <SC.CVFormContainer>
       <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Age:
-          <input
-            type="number"
-            name="age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Phone:
-          <Phone phone={phone} setPhone={setPhone} />
-        </label>
-        <br />
-        <label>
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <Doxx setAddress={setAddress} />
-        </label>
-        <br />
-        <label>
-          Profile:
-          <input
-            type="text"
-            name="profile"
-            value={profile}
-            onChange={(e) => setProfile(e.target.value)}
-          />
-        </label>
+      <CustomInput
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="select"
+        />
+        <CustomSelect
+          label='name'
+          options={[
+            // empty first
+            { value: "", label: "" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "3", label: "3" },
+          ]}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <CustomInput
+          label="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <CustomInput
+          label="Age"
+          type="number"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+
+        <Phone phone={phone} setPhone={setPhone} />
+
+        <CustomInput
+          label="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <Doxx setAddress={setAddress} />
+
+        <CustomInput
+          label="Profile"
+          value={profile}
+          onChange={(e) => setProfile(e.target.value)}
+        />
         <SingleFileUploader
           setBase64Image={setPdfImage}
         />
