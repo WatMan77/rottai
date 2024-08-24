@@ -115,7 +115,7 @@ const CvPdf = () => {
             <Text style={styles.subheader}>Skills</Text>
             {exp.skills.map((s, index) => (
               <Text key={index} style={styles.text}>
-                {s.desc} {s.rating} / 5
+                {s.desc}
               </Text>
             ))}
           </View>
