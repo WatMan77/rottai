@@ -102,6 +102,12 @@ const CvPdf = () => {
             </Text>
           </View>
 
+          {/* Profile */}
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Profile</Text>
+            <Text style={styles.text}>{basics.profile}</Text>
+          </View>
+
           <View style={styles.section}>
             <Text style={styles.subheader}>Experience</Text>
             {exp.exp.map((e, index) => (
