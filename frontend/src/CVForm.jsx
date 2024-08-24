@@ -6,6 +6,7 @@ import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
+import * as apiService from "./apiService.js";
 import styled from "styled-components";
 import { H1 } from "./common/Text.jsx";
 import { CustomInput, CustomSelect } from "./common/Inputs.jsx";
@@ -38,7 +39,7 @@ function CVForm() {
   };
 
   // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
     // Split experience and highlights into arrays if needed
@@ -67,68 +68,76 @@ function CVForm() {
     );
 
     const cv = new CV(basicInfo, experiences);
+    console.log(await apiService.post(cv))
 
     // You can now use the cv object, e.g., send it to a server or display it
     console.log("CV: ", cv);
   };
-
   return (
     <SC.CVFormContainer>
       <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
-        <CustomInput
-          label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="select"
-        />
-        <CustomSelect
-          label='name'
-          options={[
-            // empty first
-            { value: "", label: "" },
-            { value: "1", label: "1" },
-            { value: "2", label: "2" },
-            { value: "3", label: "3" },
-          ]}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <CustomInput
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <CustomInput
-          label="Age"
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        />
-
-        <Phone phone={phone} setPhone={setPhone} />
-
-        <CustomInput
-          label="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <Doxx setAddress={setAddress} />
-
-        <CustomInput
-          label="Profile"
-          value={profile}
-          onChange={(e) => setProfile(e.target.value)}
-        />
-
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Age:
+          <input
+            type="number"
+            name="age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Phone:
+          <Phone phone={phone} setPhone={setPhone} />
+        </label>
+        <br />
+        <label>
+          Address:
+          <input
+            type="text"
+            name="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <Doxx setAddress={setAddress} />
+        </label>
+        <br />
+        <label>
+          Profile:
+          <input
+            type="text"
+            name="profile"
+            value={profile}
+            onChange={(e) => setProfile(e.target.value)}
+          />
+        </label>
         <SingleFileUploader
           setBase64Image={setPdfImage}
           setImageType={setImageType}
         />
-        <br />
-        <br />
+        {imageType && <img src={`${pdfImage}`} />}
+        <SC.InputField>
         <label>
           Hobbies:
           <input
@@ -138,7 +147,8 @@ function CVForm() {
             onChange={(e) => setHobbies(e.target.value)}
           />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Experience:
           <textarea
@@ -148,7 +158,8 @@ function CVForm() {
             placeholder="Enter experiences, each on a new line"
           ></textarea>
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Highlights:
           <textarea
@@ -158,7 +169,8 @@ function CVForm() {
             placeholder="Enter highlights, each on a new line"
           ></textarea>
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>Skills:</label>
         <Skills
           addSkillValue={addSkillValue}
@@ -166,13 +178,15 @@ function CVForm() {
           setSkills={setSkills}
           style={{ marginBottom: "30px" }}
         />
+        </SC.InputField>
+        <SC.InputField>
         <Languages
           langs={langs}
           setLangs={setLangs}
           addLanguage={addLanguage}
         />
-        <br />
-        <button type="submit">Submit</button>
+        </SC.InputField>
+        <SC.Button type="submit">Submit</SC.Button>
       </form>
     </SC.CVFormContainer>
   );
