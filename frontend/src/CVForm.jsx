@@ -8,8 +8,14 @@ import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
+import styled from "styled-components";
 import { H1 } from "./common/Text.jsx";
-import { CustomInput, CustomSelect, CustomTextarea, InputsWrapper } from "./common/Inputs.jsx";
+import {
+  CustomInput,
+  CustomSelect,
+  CustomTextarea,
+  InputsWrapper,
+} from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
