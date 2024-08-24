@@ -1,3 +1,3 @@
 namespace RottAI.Models;
 
-public record ThreadDto(List<string> Messages, string ThreadId);
+public record ThreadDto(List<object> Messages, string ThreadId);

@@ -7,6 +7,10 @@ import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
+import * as apiService from "./apiService.js";
+import styled from "styled-components";
+import { H1 } from "./common/Text.jsx";
+import { CustomInput, CustomSelect } from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -22,7 +26,6 @@ function CVForm() {
   const [langs, setLangs] = useState([{ lang: "", level: "Don't know" }]); // Array of language objects
   const [highlights, setHighlights] = useState(""); // To be split into multiple entries if needed
   const [pdfImage, setPdfImage] = useState(null);
-  const [imageType, setImageType] = useState(null);
 
   const navigate = useNavigate();
 
@@ -67,6 +70,7 @@ function CVForm() {
     );
 
     const cv = new CV(basicInfo, experiences);
+    console.log(await apiService.post(cv));
 
     // You can now use the cv object, e.g., send it to a server or display it
     console.log("CV: ", cv);
@@ -86,75 +90,56 @@ function CVForm() {
   };
   return (
     <SC.CVFormContainer>
-      <h1>CV Information</h1>
+      <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
-        <SC.InputField>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-        </SC.InputField>
-        <SC.InputField>
-          <label>
-            Age:
-            <input
-              type="number"
-              name="age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </label>
-        </SC.InputField>
-        <SC.InputField>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </SC.InputField>
-        <SC.InputField>
-          <label>
-            Phone:
-            <Phone phone={phone} setPhone={setPhone} />
-          </label>
-        </SC.InputField>
-        <SC.InputField>
-          <label>
-            Address:
-            <input
-              type="text"
-              name="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <Doxx setAddress={setAddress} />
-          </label>
-        </SC.InputField>
-        <SC.InputField>
-          <label>
-            Profile:
-            <input
-              type="text"
-              name="profile"
-              value={profile}
-              onChange={(e) => setProfile(e.target.value)}
-            />
-          </label>
-        </SC.InputField>
-        <SingleFileUploader
-          setBase64Image={setPdfImage}
-          setImageType={setImageType}
+        <CustomInput
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="select"
         />
-        {imageType && <img src={`${pdfImage}`} />}
+        <CustomSelect
+          label="name"
+          options={[
+            // empty first
+            { value: "", label: "" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "3", label: "3" },
+          ]}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <CustomInput
+          label="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <CustomInput
+          label="Age"
+          type="number"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+
+        <Phone phone={phone} setPhone={setPhone} />
+
+        <CustomInput
+          label="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <Doxx setAddress={setAddress} />
+
+        <CustomInput
+          label="Profile"
+          value={profile}
+          onChange={(e) => setProfile(e.target.value)}
+        />
+        <SingleFileUploader setBase64Image={setPdfImage} />
+        {pdfImage && <img src={`${pdfImage}`} />}
         <SC.InputField>
           <label>
             Hobbies:

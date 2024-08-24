@@ -1,6 +1,7 @@
 #pragma warning disable OPENAI001
 
 using System.ClientModel;
+using System.Text.Json;
 using OpenAI;
 using OpenAI.Assistants;
 using RottAI.Models;
@@ -27,7 +28,7 @@ public class OpenAIService
                         MessageContent.FromText(initialPrompt),
                     ]),
                 }
-            });
+            }, new RunCreationOptions{ ResponseFormat = AssistantResponseFormat.JsonObject });
         return await AwaitAssistantResponse(run.Value.ThreadId, run.Value.Id);
     }
 
@@ -49,14 +50,14 @@ public class OpenAIService
         return new ThreadDto(GetMessages(messages), threadId);
     }
 
-    private static List<string> GetMessages(List<ThreadMessage> messages)
+    private static List<object> GetMessages(List<ThreadMessage> messages)
     {
-        var outputMessages = new List<string>();
-        foreach (MessageContent contentItem in messages.SelectMany(x => x.Content))
+        var outputMessages = new List<object>();
+        foreach (MessageContent contentItem in messages[0].Content)
         {
             if (!string.IsNullOrEmpty(contentItem.Text))
             {
-                outputMessages.Add(contentItem.Text);
+                outputMessages.Add(JsonSerializer.Deserialize<object>(contentItem.Text)!);
             }
         }
         return outputMessages;
