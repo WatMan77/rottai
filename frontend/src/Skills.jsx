@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import { CustomInput, InputsWrapper } from "./common/Inputs";
+
 // eslint-disable-next-line react/prop-types
 function Skills({ addSkillValue, skills, setSkills }) {
   const possibleSkills = [
@@ -1411,27 +1414,32 @@ function Skills({ addSkillValue, skills, setSkills }) {
     <>
       <div id="skills">
         {/* Render each skill with text input and slider */}
-        {skills.map((skill, index) => (
-          <div key={index} style={{ marginBottom: "30px" }}>
-            <input
+        {skills?.map((skill, index) => (
+          <SkillsWrapper key={index}>
+            {/* <input
               type="text"
               value={skill.desc}
               onChange={(e) => handleTextChange(index, e)}
               placeholder="Skill name"
-            />
-            <br />
-            <input
-              type="range"
-              min="0"
-              max="5"
-              step="0.001"
-              value={skill.rating}
-              onChange={(e) => handleRangeChange(index, e)}
-            />
-            <br />
-            <span>{skill.rating}/5</span> {/* Display current rating value */}
-            <br />
-          </div>
+            /> */}
+            <InputsWrapper>
+              <CustomInput
+                type="text"
+                value={skill.desc}
+                onChange={(e) => handleTextChange(index, e)}
+                placeholder="Skill name"
+              />
+              <input
+                type="range"
+                min="0"
+                max="5"
+                step="1"
+                value={skill.rating}
+                onChange={(e) => handleRangeChange(index, e)}
+              />
+              <span>{skill.rating}/5</span> {/* Display current rating value */}
+            </InputsWrapper>
+          </SkillsWrapper>
         ))}
       </div>
 
@@ -1442,7 +1450,7 @@ function Skills({ addSkillValue, skills, setSkills }) {
             possibleSkills[
               parseInt(Math.random() * 1000) % (possibleSkills.length - 1)
             ],
-            Math.random() * 5
+            Math.min(Math.floor(Math.random() * 5), 2)
           );
         }}
       >
@@ -1461,5 +1469,13 @@ function Skills({ addSkillValue, skills, setSkills }) {
     </>
   );
 }
+
+const SkillsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+`;
 
 export default Skills;

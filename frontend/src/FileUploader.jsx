@@ -29,42 +29,7 @@ export const SingleFileUploader = ({ pdfImage, setBase64Image }) => {
       reader.onerror = reject;
     });
 
-  const FileInputContainer = styled.div`
-    position: relative;
-    width: 100%;
-    margin: 0;
-  `;
-
-  const FileInputLabel = styled.label`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% - 36px);
-    padding: 20px;
-    border: 2px dashed #5b9ccf;
-    border-radius: 15px;
-    background: #5b939826;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #375c6025;
-    }
-  `;
-
-  const HiddenFileInput = styled.input`
-    display: none;
-  `;
-
-  const FileInputIcon = styled.div`
-    margin-bottom: 10px;
-    font-size: 24px;
-    color: #5b9ccf;
-  `;
+  
 
   const [showBigThumbsUp, setShowBigThumbsUp] = useState(false);
   useEffect(() => {
@@ -119,6 +84,42 @@ export const SingleFileUploader = ({ pdfImage, setBase64Image }) => {
     </>
   );
 };
+const FileInputContainer = styled.div`
+    position: relative;
+    width: 100%;
+    margin: 0;
+  `;
+
+  const FileInputLabel = styled.label`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 36px);
+    padding: 20px;
+    border: 2px dashed #5b9ccf;
+    border-radius: 15px;
+    background: #5b939826;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #375c6025;
+    }
+  `;
+
+  const HiddenFileInput = styled.input`
+    display: none;
+  `;
+
+  const FileInputIcon = styled.div`
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #5b9ccf;
+  `;
 const BigText = styled.span`
   position: absolute;
   left: 50px;

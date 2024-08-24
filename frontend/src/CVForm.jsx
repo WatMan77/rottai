@@ -9,12 +9,13 @@ import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
 import styled from "styled-components";
-import { H1 } from "./common/Text.jsx";
+import { H1, H2 } from "./common/Text.jsx";
 import {
   CustomInput,
   CustomSelect,
   CustomTextarea,
   InputsWrapper,
+  InputsWrapper2,
 } from "./common/Inputs.jsx";
 
 function CVForm() {
@@ -76,7 +77,7 @@ function CVForm() {
   };
   return (
     <SC.CVFormContainer>
-      <H1>CV Information</H1>
+      <H1>{`CV Information`}</H1>
       <Stack onSubmit={handleSubmit}>
         <CustomInput
           label="Name"
@@ -141,13 +142,15 @@ function CVForm() {
           />
         </SC.InputField>
         <SC.InputField>
-          <label>Skills:</label>
-          <Skills
-            addSkillValue={addSkillValue}
-            skills={skills}
-            setSkills={setSkills}
-            style={{ marginBottom: "30px" }}
-          />
+          <InputsWrapper2>
+            <H2>Skills:</H2>
+            <Skills
+              addSkillValue={addSkillValue}
+              skills={skills}
+              setSkills={setSkills}
+              style={{ marginBottom: "30px" }}
+            />
+          </InputsWrapper2>
         </SC.InputField>
         <SC.InputField>
           <Languages
