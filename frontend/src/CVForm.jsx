@@ -4,7 +4,7 @@ import Phone from "./Phone.jsx";
 import Doxx from "./Doxx.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
-import { SingleFileUploader } from "./fileUploader.jsx";
+import { SingleFileUploader } from "./FileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
@@ -128,8 +128,7 @@ function CVForm() {
           value={profile}
           onChange={(e) => setProfile(e.target.value)}
         />
-        <SingleFileUploader setBase64Image={setPdfImage} />
-        {pdfImage && <img src={`${pdfImage}`} />}
+        <SingleFileUploader pdfImage={pdfImage} setBase64Image={setPdfImage} />
         <SC.InputField>
           <label>
             Hobbies:
