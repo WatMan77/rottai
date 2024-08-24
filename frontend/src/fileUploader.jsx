@@ -4,7 +4,7 @@ import imageCompression from 'browser-image-compression';
 export const SingleFileUploader = ({ setBase64Image }) => {
   const [file, setFile] = useState(null)
   const handleFileChange = async (event) => {
-    if (event.target.files) {
+    if (event?.target?.files) {
       const options = {
         maxSizeMB: 1,
         useWebWorker: true,
