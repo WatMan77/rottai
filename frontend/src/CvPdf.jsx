@@ -8,6 +8,7 @@ import {
   StyleSheet,
   PDFViewer,
   Image,
+  Link,
 } from "@react-pdf/renderer";
 
 const CvPdf = () => {
@@ -151,6 +152,10 @@ const CvPdf = () => {
                 {h}
               </Text>
             ))}
+          </View>
+          <View>
+            <Text style={styles.subheader}>My personal website</Text>
+            <Link src="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Link</Link>
           </View>
         </Page>
       </Document>
