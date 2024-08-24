@@ -16,8 +16,18 @@ import CvPdf from "./CvPdf.jsx";
 
 import { useEffect, useState } from "react";
 import { H1 } from "./common/Text.jsx";
+import * as apiService from "./apiService.js";
+
+
 
 function Home() {
+  const [jobs, setJobs] = useState([]);
+  const setOpenJobs = async () => {
+    setJobs(await apiService.getOpenJobs())
+  } 
+  useEffect(() => {
+    setOpenJobs()
+  }, [])
   return (
     <>
       <H1>Rott.AI</H1>
@@ -26,6 +36,24 @@ function Home() {
       <a href="https://toimistot.te-palvelut.fi/">
       <img  src={Unemployment} />
       </a>
+      {jobs && (
+        <>
+          <h2>Ryhdy vantaalaismieheksi!</h2>
+          <ul>
+              {jobs.map((job, index) => {
+                return (
+                <div key={index}>
+                  <h4>{job.tyotehtava}</h4>
+                  <p>{job.organisaatio}</p>
+                  <a href={job.tyoavain}>Linkki</a>
+                  <p> Osoite: {job.osoite}</p>
+                  <p> Haku päättyy: {job.haku_paattyy_pvm}</p>
+                </div>
+                )
+              })}
+          </ul>
+        </>
+      )}
     </>
   );
 }
