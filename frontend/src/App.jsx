@@ -17,6 +17,7 @@ import CvPdf from "./CvPdf.jsx";
 import { useEffect, useState } from "react";
 import { H1 } from "./common/Text.jsx";
 import * as apiService from "./apiService.js";
+import * as SC from "./App.styles.js";
 
 
 
@@ -39,19 +40,19 @@ function Home() {
       {jobs && (
         <>
           <h2>Become a Vantaa Man!</h2>
-          <ul>
+          <SC.List>
               {jobs.map((job, index) => {
                 return (
-                <li key={index}>
-                  <h4>Position: {job.tyotehtava}</h4>
+                <SC.ListItem key={index}>
+                  <h4><b>Position: {job.tyotehtava}</b></h4>
                   <p>{job.organisaatio}</p>
-                  <a href={job.tyoavain}>Link</a>
-                  <p> Address: {job.osoite}</p>
-                  <p> Application period ends: {job.haku_paattyy_pvm}</p>
-                </li>
+                  <p><b>Address:</b> {job.osoite}</p>
+                  <p><b>Application period ends:</b> {job.haku_paattyy_pvm}</p>
+                  <SC.LinkButton><SC.Link href={job.tyoavain}>Apply</SC.Link></SC.LinkButton>
+                </SC.ListItem>
                 )
               })}
-          </ul>
+          </SC.List>
         </>
       )}
     </>
