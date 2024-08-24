@@ -8,17 +8,8 @@ class CV {
    * @param {BasicInfo} basics
    */
     constructor(basics, exp) {
-        this.name = basics.name;
-        this.age = basics.age;
-        this.email = basics.email;
-        this.profile = basics.profile;
-        this.address = basics.address;
-        this.hobbies = basics.hobbies
-
-        this.exp = exp.exp;
-        this.skills = exp.skills;
-        this.languages = exp.languages;
-        this.highlights = exp.highlights;
+        this.basics = basics;
+        this.experience = exp;
     }
 }
 
