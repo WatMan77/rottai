@@ -42,7 +42,7 @@ const InputField = styled.input`
 `;
 
 const SelectField = styled.select`
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 18px;
   padding-left: 20px;
   padding-right: 20px;

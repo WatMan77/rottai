@@ -8,7 +8,7 @@ import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import styled from "styled-components";
 import { H1 } from "./common/Text.jsx";
-import { CustomInput } from "./common/Inputs.jsx";
+import { CustomInput, CustomSelect } from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -81,6 +81,18 @@ function CVForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           type="select"
+        />
+        <CustomSelect
+          label='name'
+          options={[
+            // empty first
+            { value: "", label: "" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "3", label: "3" },
+          ]}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <CustomInput
