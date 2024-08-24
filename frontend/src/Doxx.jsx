@@ -54,14 +54,14 @@ function Doxx({setAddress}){
     return(
         <>
 
-        <MinSizeButton type="button" onClick={DoxxUser}>I don't know</MinSizeButton>  
+        <SelfAlignButton type="button" onClick={DoxxUser}>I don't know</SelfAlignButton>  
         
         </>
     );
 }
 
-const MinSizeButton = styled.button`
-  max-width: max-content;
+const SelfAlignButton = styled.button`
+  align-self: center;
 `;  
 
 export default Doxx;

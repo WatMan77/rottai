@@ -159,6 +159,4 @@ export const InputsWrapper = styled.div`
   border-radius: 8px;
   width: 100%;
   padding: 4px;
-  align-items: center;
-  justify-content: center;
 `;
