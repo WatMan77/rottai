@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   Page,
   Text,
@@ -6,13 +8,18 @@ import {
   StyleSheet,
   PDFViewer,
 } from "@react-pdf/renderer";
-import { useNavigate } from "react-router-dom";
-const CvPdf = ({ cv }) => {
-  const navigate = useNavigate();
-  if (!cv) {
-    // Don't show CV if there is nothing to show
-    navigate("/");
-  }
+
+const CvPdf = () => {
+  const location = useLocation();
+
+  const [cv, setCv] = useState({ bascis: {}, experience: {} });
+
+  useEffect(() => {
+    const c = location.state?.cv;
+    if (c) {
+      setCv(c);
+    }
+  }, [cv, location.state?.cv]);
   const basics = cv.basics;
   const exp = cv.experience;
   const styles = StyleSheet.create({
@@ -55,69 +62,68 @@ const CvPdf = ({ cv }) => {
       border: "1px solid #bdc3c7", // Border for section headers
     },
   });
-  <PDFViewer style={styles.viewer}>
-    {" "}
-    {/* Apply the viewer style here */}
-    <Document>
-      <Page style={styles.page}>
-        {/* Header */}
-        <View style={styles.section}>
-          <Text style={styles.header}>John Doe asiduaohds</Text>
-          <Text style={styles.text}>
-            {basics.email} | {basics.phone} | {basics.email}
-          </Text>
-        </View>
+  if (!cv.basics || !cv.experience) {
+    return <div></div>;
+  }
+  return (
+    <PDFViewer style={styles.viewer}>
+      <Document>
+        <Page style={styles.page}>
+          <View style={styles.section}>
+            <Text style={styles.header}>John Doe</Text>
+            <Text style={styles.text}>
+              {basics.email} | {basics.phone}
+            </Text>
+          </View>
 
-        {/* Experience */}
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Experience</Text>
-          {exp.exp.map((e) => (
-            <Text key={e} style={styles.text}>
-              {e}
-            </Text>
-          ))}
-        </View>
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Experience</Text>
+            {exp.exp.map((e, index) => (
+              <Text key={index} style={styles.text}>
+                {e}
+              </Text>
+            ))}
+          </View>
 
-        {/* Skills */}
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Skills</Text>
-          {exp.skills.map((s) => (
-            <Text key={s} style={styles.text}>
-              {s.desc} {s.rating} / 5
-            </Text>
-          ))}
-        </View>
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Skills</Text>
+            {exp.skills.map((s, index) => (
+              <Text key={index} style={styles.text}>
+                {s.desc} {s.rating} / 5
+              </Text>
+            ))}
+          </View>
 
-        {/* Hobbies */}
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Hobbies</Text>
-          {basics.hobbies.map((h) => (
-            <Text key={h} style={styles.text}>
-              {h}
-            </Text>
-          ))}
-        </View>
-        {/* Languages */}
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Hobbies</Text>
-          {exp.languages.map((l) => (
-            <Text key={l} style={styles.text}>
-              {l.language} Level: {l.proficiency}
-            </Text>
-          ))}
-        </View>
-        {/* Highlights */}
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Hobbies</Text>
-          {exp.highlights.map((h) => (
-            <Text key={h} style={styles.text}>
-              {h}
-            </Text>
-          ))}
-        </View>
-      </Page>
-    </Document>
-  </PDFViewer>;
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Hobbies</Text>
+            {basics.hobbies.map((h, index) => (
+              <Text key={index} style={styles.text}>
+                {h}
+              </Text>
+            ))}
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Languages</Text>
+            {exp.languages.map((l, index) => (
+              <Text key={index} style={styles.text}>
+                {l.language} Level: {l.proficiency}
+              </Text>
+            ))}
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.subheader}>Highlights</Text>
+            {exp.highlights.map((h, index) => (
+              <Text key={index} style={styles.text}>
+                {h}
+              </Text>
+            ))}
+          </View>
+        </Page>
+      </Document>
+    </PDFViewer>
+  );
 };
 
 export default CvPdf;

@@ -11,11 +11,11 @@ import Background from "./assets/background.png";
 
 import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
+import CvPdf from "./CvPdf.jsx";
 
 import { useEffect, useState } from "react";
 
 function Home() {
-  
   return (
     <>
       <LogoText>Rott.AI</LogoText>
@@ -156,7 +156,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cv-form" element={<CVForm />} />
-          <Route path="/cv" element={<CVPage />} />
+          <Route path="/cv" element={<CvPdf />} />
         </Routes>
       </Router>
     </AppWrapper>
@@ -169,7 +169,7 @@ const AppWrapper = styled.div`
   background: url(${Background}) no-repeat center center fixed;
   background-size: cover;
   background-color: #f9f9f9;
-  box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.5) ;
+  box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.5);
   min-height: 100vh;
   min-height: 100dvh;
   min-width: 250px;
