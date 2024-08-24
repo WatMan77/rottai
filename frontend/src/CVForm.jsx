@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
 import styled from "styled-components";
 import { H1 } from "./common/Text.jsx";
-import { CustomInput, CustomSelect, InputsWrapper } from "./common/Inputs.jsx";
+import { CustomInput, CustomSelect, CustomTextarea, InputsWrapper } from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -123,7 +123,7 @@ function CVForm() {
           <Doxx setAddress={setAddress} />
         </InputsWrapper>
 
-        <CustomInput
+        <CustomTextarea
           label="Profile"
           value={profile}
           onChange={(e) => setProfile(e.target.value)}

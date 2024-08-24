@@ -150,6 +150,69 @@ export function CustomSelect({ label, options, ...selectProps }) {
   );
 }
 
+// CustomTextarea Component
+const TextareaField = styled.textarea`
+  width: calc(100% - 32px);
+  padding: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  resize: vertical; /* Allows only vertical resizing */
+
+  &:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+
+  /* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none; /* Firefox */
+`;
+
+
+
+export function CustomTextarea({ label, ...textareaProps }) {
+  const [focused, setFocused] = useState(false);
+  const [value, setValue] = useState("");
+
+  const handleFocus = () => setFocused(true);
+  const handleBlur = () => setFocused(false);
+
+  useEffect(() => {
+    if (textareaProps.value) {
+      setValue(textareaProps.value);
+    }
+  }, [textareaProps.value]);
+
+  return (
+    <Container>
+      <TextareaField
+        {...textareaProps}
+        value={value || textareaProps.value}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={(e) => {
+          setValue(e.target.value);
+          if (textareaProps.onChange) textareaProps.onChange(e); // Allow external onChange handling
+        }}
+      />
+      <InputLabel focused={focused} hasValue={value}>
+        {label}
+      </InputLabel>
+    </Container>
+  );
+}
+
 export const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
