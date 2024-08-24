@@ -9,7 +9,7 @@ import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
 import { H1 } from "./common/Text.jsx";
-import { CustomInput, CustomSelect } from "./common/Inputs.jsx";
+import { CustomInput, CustomSelect, CustomTextarea, InputsWrapper } from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -71,24 +71,12 @@ function CVForm() {
   return (
     <SC.CVFormContainer>
       <H1>CV Information</H1>
-      <form onSubmit={handleSubmit}>
+      <Stack onSubmit={handleSubmit}>
         <CustomInput
           label="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           type="select"
-        />
-        <CustomSelect
-          label="name"
-          options={[
-            // empty first
-            { value: "", label: "" },
-            { value: "1", label: "1" },
-            { value: "2", label: "2" },
-            { value: "3", label: "3" },
-          ]}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
         />
 
         <CustomInput
@@ -106,14 +94,16 @@ function CVForm() {
 
         <Phone phone={phone} setPhone={setPhone} />
 
-        <CustomInput
-          label="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <Doxx setAddress={setAddress} />
+        <InputsWrapper>
+          <CustomInput
+            label="Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <Doxx setAddress={setAddress} />
+        </InputsWrapper>
 
-        <CustomInput
+        <CustomTextarea
           label="Profile"
           value={profile}
           onChange={(e) => setProfile(e.target.value)}
@@ -170,9 +160,14 @@ function CVForm() {
           />
         </SC.InputField>
         <SC.Button type="submit">Submit</SC.Button>
-      </form>
+      </Stack>
     </SC.CVFormContainer>
   );
 }
 
+const Stack = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
 export default CVForm;

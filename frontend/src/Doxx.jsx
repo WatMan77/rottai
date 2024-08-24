@@ -1,3 +1,4 @@
+import styled from "styled-components";
 
 function formatPostalAddress(address) {
     const { house_number, road, suburb, city, state, postcode, country } = address;
@@ -53,10 +54,14 @@ function Doxx({setAddress}){
     return(
         <>
 
-        <button type="button" onClick={DoxxUser}>I don't know</button>  
+        <SelfAlignButton type="button" onClick={DoxxUser}>I don't know</SelfAlignButton>  
         
         </>
     );
 }
+
+const SelfAlignButton = styled.button`
+  align-self: center;
+`;  
 
 export default Doxx;
