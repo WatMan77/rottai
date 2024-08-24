@@ -63,7 +63,8 @@ function CVForm() {
     );
 
     const cv = new CV(basicInfo, experiences);
-    console.log(await apiService.post(cv));
+    const response = await apiService.post(cv);
+    console.log(response);
 
     // You can now use the cv object, e.g., send it to a server or display it
   };

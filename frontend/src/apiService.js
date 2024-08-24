@@ -7,5 +7,5 @@ export const post = async (CV) => {
         method: 'POST',
         body: JSON.stringify(CV)
     })
-    return response.body;
+    return await response.json();
 }
