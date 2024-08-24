@@ -1,6 +1,6 @@
 # RottAI
 
-This project was implemented for the 2024 Junction Stupid Hack hackathon.
+This project was implemented for the 2024 Junction Stupid Hack hackathon. The idea is to simplify the process of creating a CV for job applications and minimize the chances of getting a job, in order to fulfill the minimum required job applications to receive unemployment benefits.
 
 ## Technologies
 
