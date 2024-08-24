@@ -8,6 +8,7 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 import Background from "./assets/background.png";
+import Unemployment from "./assets/unemployment.png";
 
 import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
@@ -20,6 +21,11 @@ function Home() {
   return (
     <>
       <H1>Rott.AI</H1>
+      <br />
+      <br />
+      <a href="https://toimistot.te-palvelut.fi/">
+      <img  src={Unemployment} />
+      </a>
     </>
   );
 }
