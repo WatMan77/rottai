@@ -78,10 +78,93 @@ function CVForm() {
 
     // You can now use the cv object, e.g., send it to a server or display it
   };
+
+  const getEmailOptions = () => {
+    const jobAvoidingEmails = [
+      { label: "whocares87@gmail.com", value: "whocares87@gmail.com" },
+      { label: "nottryingtoday@yahoo.com", value: "nottryingtoday@yahoo.com" },
+      {
+        label: "whateverman2024@hotmail.com",
+        value: "whateverman2024@hotmail.com",
+      },
+      {
+        label: "illfigureitoutlater@rott.ai",
+        value: "illfigureitoutlater@rott.ai",
+      },
+      { label: "lazybones44@gmail.com", value: "lazybones44@gmail.com" },
+      { label: "noplan22@yahoo.com", value: "noplan22@yahoo.com" },
+      {
+        label: "chillinforever56@hotmail.com",
+        value: "chillinforever56@hotmail.com",
+      },
+      { label: "whatswork2024@rott.ai", value: "whatswork2024@rott.ai" },
+      { label: "couchpotato99@gmail.com", value: "couchpotato99@gmail.com" },
+      {
+        label: "notinterestedjoe@yahoo.com",
+        value: "notinterestedjoe@yahoo.com",
+      },
+      {
+        label: "mehwhatever78@hotmail.com",
+        value: "mehwhatever78@hotmail.com",
+      },
+      { label: "notbothered@rott.ai", value: "notbothered@rott.ai" },
+      {
+        label: "illgetaroundtoit2024@gmail.com",
+        value: "illgetaroundtoit2024@gmail.com",
+      },
+      {
+        label: "dontwannadoit55@yahoo.com",
+        value: "dontwannadoit55@yahoo.com",
+      },
+      {
+        label: "whocaresnojob@hotmail.com",
+        value: "whocaresnojob@hotmail.com",
+      },
+      { label: "procrastinator33@rott.ai", value: "procrastinator33@rott.ai" },
+      {
+        label: "lazyandlovinit2024@gmail.com",
+        value: "lazyandlovinit2024@gmail.com",
+      },
+      {
+        label: "workisoverrated@yahoo.com",
+        value: "workisoverrated@yahoo.com",
+      },
+      {
+        label: "stillnothappening@hotmail.com",
+        value: "stillnothappening@hotmail.com",
+      },
+      { label: "tomorrowmaybe@rott.ai", value: "tomorrowmaybe@rott.ai" },
+    ];
+      const formattedName = name.replace(/\s+/g, '.');
+  
+  
+  
+    if (name) {
+      return [
+        { label: "", value: "" },
+        {
+          label: `${formattedName}@gmail.com`,
+          value: `${formattedName}@gmail.com`.toLowerCase(),
+        },
+        {
+          label: `${formattedName}@hotmail.com`,
+          value: `${formattedName}@hotmail.com`.toLowerCase(),
+        },
+        {
+          label: `${formattedName}@rott.ai`,
+          value: `${formattedName}@rott.ai`.toLowerCase(),
+        },
+        ...jobAvoidingEmails,
+      ];
+    } else {
+      return [{ label: "", value: "" }, ...jobAvoidingEmails];
+    }
+  };
+
   return (
     <SC.CVFormContainer>
       <H1>{`CV Information`}</H1>
-      <Stack onSubmit={handleSubmit}>
+      <Stack>
         <CustomInput
           label="Name"
           value={name}
@@ -89,9 +172,10 @@ function CVForm() {
           type="select"
         />
 
-        <CustomInput
+        <CustomSelect
           label="Email"
           value={email}
+          options={getEmailOptions()}
           onChange={(e) => setEmail(e.target.value)}
         />
 
@@ -162,7 +246,7 @@ function CVForm() {
             addLanguage={addLanguage}
           />
         </SC.InputField>
-        <SC.Button type="submit">Submit</SC.Button>
+        <SC.Button onClick={handleSubmit}>Submit</SC.Button>
       </Stack>
     </SC.CVFormContainer>
   );

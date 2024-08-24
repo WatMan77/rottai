@@ -58,6 +58,10 @@ const SelectField = styled.select`
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
   }
+
+  &:hover {
+    cursor: text;
+  }
 `;
 
 const SelectContainer = styled.div`
@@ -179,8 +183,6 @@ const TextareaField = styled.textarea`
   /* Hide scrollbar for Firefox */
   scrollbar-width: none; /* Firefox */
 `;
-
-
 
 export function CustomTextarea({ label, ...textareaProps }) {
   const [focused, setFocused] = useState(false);
