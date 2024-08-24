@@ -22,8 +22,8 @@ function CVForm() {
   const [hobbies, setHobbies] = useState("");
   const [phone, setPhone] = useState("");
   const [experience, setExperience] = useState(""); // To be split into multiple entries if needed
-  const [skills, setSkills] = useState([{ text: "", range: 0 }]);
-  const [langs, setLangs] = useState([{ lang: "", level: "Don't know" }]); // Array of language objects
+  const [skills, setSkills] = useState([]);
+  const [langs, setLangs] = useState([]); // Array of language objects
   const [highlights, setHighlights] = useState(""); // To be split into multiple entries if needed
   const [pdfImage, setPdfImage] = useState(null);
 
@@ -33,11 +33,11 @@ function CVForm() {
   const addSkillValue = (text = "", range = 0) => {
     if (typeof text !== "string") text = "";
 
-    setSkills([...skills, { text: text, range: range }]);
+    setSkills([...skills, { desc: text, rating: range }]);
   };
 
   const addLanguage = () => {
-    setLangs([...langs, { lang: "", level: "Don't know" }]);
+    setLangs([...langs, { language: "", proficiency: "Don't know" }]);
   };
 
   // Function to handle form submission
