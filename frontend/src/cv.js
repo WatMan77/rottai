@@ -10,13 +10,15 @@ class CV {
     constructor(basics, exp) {
         this.name = basics.name;
         this.age = basics.age;
-        this.email = basics.age;
-        this.profile = basics.profileM
+        this.email = basics.email;
+        this.profile = basics.profile;
         this.address = basics.address;
         this.hobbies = basics.hobbies
 
-        this.exp = exp.experience;
+        this.exp = exp.exp;
         this.skills = exp.skills;
+        this.languages = exp.languages;
+        this.highlights = exp.highlights;
     }
 }
 
