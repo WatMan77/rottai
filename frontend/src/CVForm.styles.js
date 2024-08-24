@@ -5,8 +5,9 @@ export const CVFormContainer = styled.div`
     flex-direction: column;
     width: max-content;
     gap: 16px;
-    background: #e6e4e1;
-    padding: 4px;
+    background: radial-gradient(circle at 0% 0%, #a0e0c4, #98c991);
+    padding: 24px;
+    border-radius: 16px;
     text-align: center;
     justify-content: center;
     align-items: center;

@@ -13,23 +13,16 @@ import styled from "styled-components";
 import CVForm from "./CVForm.jsx";
 
 import { useEffect, useState } from "react";
+import { H1 } from "./common/Text.jsx";
 
 function Home() {
   
   return (
     <>
-      <LogoText>Rott.AI</LogoText>
+      <H1>Rott.AI</H1>
     </>
   );
 }
-const LogoText = styled.h1`
-  background-image: linear-gradient(90deg, #066b2e, #24119f);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  width: max-content;
-`;
 
 const CVPage = () => {
   const styles = StyleSheet.create({

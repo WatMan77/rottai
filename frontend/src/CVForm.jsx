@@ -7,6 +7,9 @@ import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import * as apiService from "./apiService.js";
+import styled from "styled-components";
+import { H1 } from "./common/Text.jsx";
+import { CustomInput, CustomSelect } from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -71,9 +74,8 @@ function CVForm() {
   };
   return (
     <SC.CVFormContainer>
-      <h1>CV Information</h1>
+      <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
-        <SC.InputField>
         <label>
           Name:
           <input
@@ -83,8 +85,7 @@ function CVForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        </SC.InputField>
-        <SC.InputField>
+        <br />
         <label>
           Age:
           <input
@@ -94,8 +95,7 @@ function CVForm() {
             onChange={(e) => setAge(e.target.value)}
           />
         </label>
-        </SC.InputField>
-        <SC.InputField>
+        <br />
         <label>
           Email:
           <input
@@ -105,14 +105,12 @@ function CVForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        </SC.InputField>
-        <SC.InputField>
+        <br />
         <label>
           Phone:
           <Phone phone={phone} setPhone={setPhone} />
         </label>
-        </SC.InputField>
-        <SC.InputField>
+        <br />
         <label>
           Address:
           <input
@@ -123,8 +121,7 @@ function CVForm() {
           />
           <Doxx setAddress={setAddress} />
         </label>
-        </SC.InputField>
-        <SC.InputField>
+        <br />
         <label>
           Profile:
           <input
@@ -134,7 +131,6 @@ function CVForm() {
             onChange={(e) => setProfile(e.target.value)}
           />
         </label>
-        </SC.InputField>
         <SingleFileUploader
           setBase64Image={setPdfImage}
         />
