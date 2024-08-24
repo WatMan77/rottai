@@ -215,10 +215,23 @@ export function CustomTextarea({ label, ...textareaProps }) {
 }
 
 export const InputsWrapper = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 8px;
   background: #5b939826;
+  /* border: 1px solid #878fc5; */
+  border-radius: 8px;
+  width: 100%;
+  padding: 4px;
+`;
+
+export const InputsWrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* background: #395b5e25; */
+  background: radial-gradient(circle at 0% 0%, #a0e0c4, #98c991);
   /* border: 1px solid #878fc5; */
   border-radius: 8px;
   width: 100%;
