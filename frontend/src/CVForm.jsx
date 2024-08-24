@@ -127,26 +127,18 @@ function CVForm() {
           </label>
         </SC.InputField>
         <SC.InputField>
-          <label>
-            Experience:
-            <textarea
-              name="experience"
-              value={experience}
-              onChange={(e) => setExperience(e.target.value)}
-              placeholder="Enter experiences, each on a new line"
-            ></textarea>
-          </label>
+          <CustomTextarea
+            label="Experience"
+            value={experience}
+            onChange={(e) => setExperience(e.target.value)}
+          />
         </SC.InputField>
         <SC.InputField>
-          <label>
-            Highlights:
-            <textarea
-              name="highlights"
-              value={highlights}
-              onChange={(e) => setHighlights(e.target.value)}
-              placeholder="Enter highlights, each on a new line"
-            ></textarea>
-          </label>
+          <CustomTextarea
+            label="Highlights"
+            value={highlights}
+            onChange={(e) => setHighlights(e.target.value)}
+          />
         </SC.InputField>
         <SC.InputField>
           <label>Skills:</label>
