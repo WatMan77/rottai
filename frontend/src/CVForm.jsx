@@ -68,7 +68,6 @@ function CVForm() {
     // You can now use the cv object, e.g., send it to a server or display it
     console.log("CV: ", cv);
   };
-
   return (
     <SC.CVFormContainer>
       <h1>CV Information</h1>
@@ -139,6 +138,7 @@ function CVForm() {
           setBase64Image={setPdfImage}
           setImageType={setImageType}
         />
+        {imageType && <img src={`${pdfImage}`} />}
         <SC.InputField>
         <label>
           Hobbies:
