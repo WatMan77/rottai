@@ -38,17 +38,17 @@ function Home() {
       </a>
       {jobs && (
         <>
-          <h2>Ryhdy vantaalaismieheksi!</h2>
+          <h2>Become a Vantaa Man!</h2>
           <ul>
               {jobs.map((job, index) => {
                 return (
-                <div key={index}>
-                  <h4>{job.tyotehtava}</h4>
+                <li key={index}>
+                  <h4>Position: {job.tyotehtava}</h4>
                   <p>{job.organisaatio}</p>
-                  <a href={job.tyoavain}>Linkki</a>
-                  <p> Osoite: {job.osoite}</p>
-                  <p> Haku päättyy: {job.haku_paattyy_pvm}</p>
-                </div>
+                  <a href={job.tyoavain}>Link</a>
+                  <p> Address: {job.osoite}</p>
+                  <p> Application period ends: {job.haku_paattyy_pvm}</p>
+                </li>
                 )
               })}
           </ul>
