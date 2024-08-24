@@ -14,14 +14,13 @@ class CV {
 }
 
 class BasicInfo {
-    constructor(name, age, email, profile, hobbies, address) {
+    constructor(name, age, email, profile, address) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.address = address;
 
         this.profile = profile;
-        this.hobbies = hobbies;
     }
 }
 /**
@@ -33,11 +32,12 @@ class BasicInfo {
  */
 
 class Experience {
-    constructor(exp, skills, languages, highlights) {
+    constructor(exp, skills, languages, highlights, hobbies) {
         this.exp = exp;
         this.skills = skills;
         this.languages = languages;
         this.highlights = highlights;
+        this.hobbies = hobbies;
     }
 }
 

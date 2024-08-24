@@ -1,5 +1,6 @@
 export const post = async (CV) => {
-    const response = await fetch('http://localhost:5000/api', { 
+    console.log("Sending:", CV);
+    const response = await fetch('http://localhost:5000/api', {
         headers: {
             "Content-Type": "application/json",
         },
