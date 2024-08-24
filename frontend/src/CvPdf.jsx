@@ -12,16 +12,20 @@ import {
 const CvPdf = () => {
   const location = useLocation();
 
-  const [cv, setCv] = useState({ bascis: {}, experience: {} });
+  const [cv, setCv] = useState({ basics: {}, experience: {} });
 
   useEffect(() => {
+    console.log("Effecting!");
     const c = location.state?.cv;
     if (c) {
+      console.log("Effect found CV!");
+      console.log(c);
       setCv(c);
     }
   }, [cv, location.state?.cv]);
   const basics = cv.basics;
   const exp = cv.experience;
+  console.log("What is experience?", cv.experience);
   const styles = StyleSheet.create({
     viewer: {
       width: "100vw", // Take up all available width
@@ -62,7 +66,12 @@ const CvPdf = () => {
       border: "1px solid #bdc3c7", // Border for section headers
     },
   });
-  if (!cv.basics || !cv.experience) {
+  if (
+    !cv.basics ||
+    Object.keys(cv.basics).length === 0 ||
+    !cv.experience ||
+    Object.keys(cv.experience).length === 0
+  ) {
     return <div></div>;
   }
   return (

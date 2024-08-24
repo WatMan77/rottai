@@ -16,6 +16,7 @@ import {
   CustomTextarea,
   InputsWrapper,
 } from "./common/Inputs.jsx";
+import CvPdf from "./CvPdf.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -71,6 +72,8 @@ function CVForm() {
     const cv = new CV(basicInfo, experiences);
     const response = await apiService.post(cv);
     console.log(response);
+
+    navigate("/cv", { state: { cv: response.messages[0] } });
 
     // You can now use the cv object, e.g., send it to a server or display it
   };
