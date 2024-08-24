@@ -96,7 +96,7 @@ const CvPdf = () => {
 
           <View style={styles.section}>
             <Text style={styles.subheader}>Hobbies</Text>
-            {basics.hobbies.map((h, index) => (
+            {exp.hobbies.map((h, index) => (
               <Text key={index} style={styles.text}>
                 {h}
               </Text>

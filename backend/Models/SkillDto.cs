@@ -7,5 +7,5 @@ public class SkillDto
     [JsonPropertyName("desc")]
     public string Description { get; init; } = string.Empty;
     [JsonPropertyName("rating")]
-    public int Rating { get; init;} = 0;
+    public float Rating { get; init;} = 0;
 }

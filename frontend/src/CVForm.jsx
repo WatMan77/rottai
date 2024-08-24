@@ -10,7 +10,12 @@ import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
 import styled from "styled-components";
 import { H1 } from "./common/Text.jsx";
-import { CustomInput, CustomSelect, CustomTextarea, InputsWrapper } from "./common/Inputs.jsx";
+import {
+  CustomInput,
+  CustomSelect,
+  CustomTextarea,
+  InputsWrapper,
+} from "./common/Inputs.jsx";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -19,7 +24,7 @@ function CVForm() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [profile, setProfile] = useState("");
-  const [hobbies, setHobbies] = useState("");
+  const [hobbies, setHobbies] = useState([]);
   const [phone, setPhone] = useState("");
   const [experience, setExperience] = useState(""); // To be split into multiple entries if needed
   const [skills, setSkills] = useState([]);
@@ -53,40 +58,21 @@ function CVForm() {
       .filter((entry) => entry.trim() !== "");
 
     // Create BasicInfo and Experience objects
-    const basicInfo = new BasicInfo(
-      name,
-      age,
-      email,
-      profile,
-      hobbies,
-      address
-    );
+    const basicInfo = new BasicInfo(name, age, email, profile, address);
 
     const experiences = new Experience(
       experienceArray,
       skills,
       langs,
-      highlightsArray
+      highlightsArray,
+      hobbies
     );
 
     const cv = new CV(basicInfo, experiences);
-    console.log(await apiService.post(cv));
+    const response = await apiService.post(cv);
+    console.log(response);
 
     // You can now use the cv object, e.g., send it to a server or display it
-    console.log("CV: ", cv);
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(cv),
-    };
-    try {
-      const response = await fetch(
-        "http://localhost:5000/object/",
-        requestOptions
-      );
-      navigate("/cv", { state: { cv: response.body } });
-    } catch (e) {
-      console.log(e);
-    }
   };
   return (
     <SC.CVFormContainer>
@@ -136,7 +122,7 @@ function CVForm() {
               type="text"
               name="hobbies"
               value={hobbies}
-              onChange={(e) => setHobbies(e.target.value)}
+              onChange={(e) => setHobbies(e.target.value.split(","))}
             />
           </label>
         </SC.InputField>
