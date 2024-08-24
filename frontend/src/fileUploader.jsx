@@ -10,6 +10,7 @@ export const SingleFileUploader = ({ setBase64Image }) => {
         useWebWorker: true,
         alwaysKeepResolution: true,
         initialQuality: 0.04,
+         maxWidthOrHeight: 512,
       }
       const fileBase64 = await toBase64(await imageCompression(event.target.files[0], options))
       setBase64Image(fileBase64);
