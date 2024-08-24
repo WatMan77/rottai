@@ -18,7 +18,7 @@ function CVForm() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [profile, setProfile] = useState("");
-  const [hobbies, setHobbies] = useState("");
+  const [hobbies, setHobbies] = useState([]);
   const [phone, setPhone] = useState("");
   const [experience, setExperience] = useState(""); // To be split into multiple entries if needed
   const [skills, setSkills] = useState([]);
@@ -126,7 +126,7 @@ function CVForm() {
               type="text"
               name="hobbies"
               value={hobbies}
-              onChange={(e) => setHobbies(e.target.value)}
+              onChange={(e) => setHobbies(e.target.value.split(","))}
             />
           </label>
         </SC.InputField>
