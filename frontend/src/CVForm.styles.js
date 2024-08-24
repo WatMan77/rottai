@@ -13,5 +13,11 @@ export const CVFormContainer = styled.div`
 `
 
 export const InputField = styled.div`
-    
+    margin-bottom: 4px;
+    border-radius: 8px;
 `
+
+export const Button = styled.button`
+
+`
+

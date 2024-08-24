@@ -73,6 +73,7 @@ function CVForm() {
     <SC.CVFormContainer>
       <h1>CV Information</h1>
       <form onSubmit={handleSubmit}>
+        <SC.InputField>
         <label>
           Name:
           <input
@@ -82,7 +83,8 @@ function CVForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Age:
           <input
@@ -92,7 +94,8 @@ function CVForm() {
             onChange={(e) => setAge(e.target.value)}
           />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Email:
           <input
@@ -102,12 +105,14 @@ function CVForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Phone:
           <Phone phone={phone} setPhone={setPhone} />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Address:
           <input
@@ -118,7 +123,8 @@ function CVForm() {
           />
           <Doxx setAddress={setAddress} />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Profile:
           <input
@@ -128,12 +134,12 @@ function CVForm() {
             onChange={(e) => setProfile(e.target.value)}
           />
         </label>
+        </SC.InputField>
         <SingleFileUploader
           setBase64Image={setPdfImage}
           setImageType={setImageType}
         />
-        <br />
-        <br />
+        <SC.InputField>
         <label>
           Hobbies:
           <input
@@ -143,7 +149,8 @@ function CVForm() {
             onChange={(e) => setHobbies(e.target.value)}
           />
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Experience:
           <textarea
@@ -153,7 +160,8 @@ function CVForm() {
             placeholder="Enter experiences, each on a new line"
           ></textarea>
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>
           Highlights:
           <textarea
@@ -163,7 +171,8 @@ function CVForm() {
             placeholder="Enter highlights, each on a new line"
           ></textarea>
         </label>
-        <br />
+        </SC.InputField>
+        <SC.InputField>
         <label>Skills:</label>
         <Skills
           addSkillValue={addSkillValue}
@@ -171,13 +180,15 @@ function CVForm() {
           setSkills={setSkills}
           style={{ marginBottom: "30px" }}
         />
+        </SC.InputField>
+        <SC.InputField>
         <Languages
           langs={langs}
           setLangs={setLangs}
           addLanguage={addLanguage}
         />
-        <br />
-        <button type="submit">Submit</button>
+        </SC.InputField>
+        <SC.Button type="submit">Submit</SC.Button>
       </form>
     </SC.CVFormContainer>
   );
