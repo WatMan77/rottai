@@ -39,7 +39,7 @@ function Home() {
       </a>
       {jobs && (
         <>
-          <h2>Become a Vantaa Man!</h2>
+          <h2 style={{color: "#000000"}}>Become a Vantaa Man!</h2>
           <SC.List>
               {jobs.map((job, index) => {
                 return (

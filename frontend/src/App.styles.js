@@ -6,6 +6,7 @@ export const List = styled.div`
     text-align: center;
     justify-content: center;
     gap: 16px;
+    color: #000000;
 `
 
 export const ListItem = styled.div`
@@ -17,6 +18,7 @@ export const ListItem = styled.div`
     margin-left: 20%;
     margin-right: 20%;
     border-radius: 16px;
+    color: #000000;
 `
 export const LinkButton = styled.button`
     margin-top: 20px;
@@ -26,6 +28,7 @@ export const LinkButton = styled.button`
     width: 80px;
     padding: 8px;
     border-radius: 8px;
+    color: #000000;
 `;
 
 export const Link = styled.a`
