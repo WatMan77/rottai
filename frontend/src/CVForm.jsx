@@ -79,12 +79,8 @@ function CVForm() {
           label="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
-        <CustomInput
-          label="Age"
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          type='select'
+
         />
 
         <CustomInput
@@ -93,29 +89,28 @@ function CVForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        {/* <CustomInput
-          label="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        /> */}
-        <label>
-          Phone:
-          <Phone phone={phone} setPhone={setPhone} />
-        </label>
-        
+        <CustomInput
+          label="Age"
+          type="number"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+
+        <Phone phone={phone} setPhone={setPhone} />
+
         <CustomInput
           label="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
         <Doxx setAddress={setAddress} />
-        
+
         <CustomInput
           label="Profile"
           value={profile}
           onChange={(e) => setProfile(e.target.value)}
         />
-        
+
         <SingleFileUploader
           setBase64Image={setPdfImage}
           setImageType={setImageType}

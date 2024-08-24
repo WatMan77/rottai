@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export const H1 = styled.h1`
@@ -61,11 +61,17 @@ export function CustomInput({ label, ...inputProps }) {
   const handleBlur = () => setFocused(false);
   const handleChange = (e) => setValue(e.target.value);
 
+  useEffect(() => {
+    if (inputProps.value) {
+      setValue(inputProps.value);
+    }
+  }, [inputProps.value]);
+
   return (
     <Container>
       <InputField
         {...inputProps}
-        value={value}
+        value={value || inputProps.value}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={(e) => {
