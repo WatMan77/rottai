@@ -22,7 +22,6 @@ function CVForm() {
   const [langs, setLangs] = useState([{ lang: "", level: "Don't know" }]); // Array of language objects
   const [highlights, setHighlights] = useState(""); // To be split into multiple entries if needed
   const [pdfImage, setPdfImage] = useState(null);
-  const [imageType, setImageType] = useState(null);
 
   // Function to add a new skill with default values
   const addSkillValue = (text = "", range = 0) => {
@@ -138,9 +137,8 @@ function CVForm() {
         </SC.InputField>
         <SingleFileUploader
           setBase64Image={setPdfImage}
-          setImageType={setImageType}
         />
-        {imageType && <img src={`${pdfImage}`} />}
+        {pdfImage && <img src={`${pdfImage}`} />}
         <SC.InputField>
         <label>
           Hobbies:
