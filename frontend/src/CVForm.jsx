@@ -4,7 +4,7 @@ import Phone from "./Phone.jsx";
 import Doxx from "./Doxx.jsx";
 import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
-import { SingleFileUploader } from "./fileUploader.jsx";
+import { SingleFileUploader } from "./FileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
 import { useNavigate } from "react-router-dom";
 import * as apiService from "./apiService.js";
@@ -117,8 +117,7 @@ function CVForm() {
           value={profile}
           onChange={(e) => setProfile(e.target.value)}
         />
-        <SingleFileUploader setBase64Image={setPdfImage} />
-        {pdfImage && <img src={`${pdfImage}`} />}
+        <SingleFileUploader pdfImage={pdfImage} setBase64Image={setPdfImage} />
         <SC.InputField>
           <label>
             Hobbies:
@@ -131,26 +130,18 @@ function CVForm() {
           </label>
         </SC.InputField>
         <SC.InputField>
-          <label>
-            Experience:
-            <textarea
-              name="experience"
-              value={experience}
-              onChange={(e) => setExperience(e.target.value)}
-              placeholder="Enter experiences, each on a new line"
-            ></textarea>
-          </label>
+          <CustomTextarea
+            label="Experience"
+            value={experience}
+            onChange={(e) => setExperience(e.target.value)}
+          />
         </SC.InputField>
         <SC.InputField>
-          <label>
-            Highlights:
-            <textarea
-              name="highlights"
-              value={highlights}
-              onChange={(e) => setHighlights(e.target.value)}
-              placeholder="Enter highlights, each on a new line"
-            ></textarea>
-          </label>
+          <CustomTextarea
+            label="Highlights"
+            value={highlights}
+            onChange={(e) => setHighlights(e.target.value)}
+          />
         </SC.InputField>
         <SC.InputField>
           <label>Skills:</label>

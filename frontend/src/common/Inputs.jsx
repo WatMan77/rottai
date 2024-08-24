@@ -153,6 +153,7 @@ export function CustomSelect({ label, options, ...selectProps }) {
 // CustomTextarea Component
 const TextareaField = styled.textarea`
   width: calc(100% - 32px);
+  min-height: 50px;
   padding: 18px;
   padding-left: 20px;
   padding-right: 20px;
