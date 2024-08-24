@@ -164,7 +164,7 @@ function CVForm() {
   return (
     <SC.CVFormContainer>
       <H1>{`CV Information`}</H1>
-      <Stack onSubmit={handleSubmit}>
+      <Stack>
         <CustomInput
           label="Name"
           value={name}
@@ -246,7 +246,7 @@ function CVForm() {
             addLanguage={addLanguage}
           />
         </SC.InputField>
-        <SC.Button type="submit">Submit</SC.Button>
+        <SC.Button onClick={handleSubmit}>Submit</SC.Button>
       </Stack>
     </SC.CVFormContainer>
   );
