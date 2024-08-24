@@ -236,4 +236,6 @@ export const InputsWrapper2 = styled.div`
   border-radius: 8px;
   width: 100%;
   padding: 4px;
+  // small bottom shadown
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
