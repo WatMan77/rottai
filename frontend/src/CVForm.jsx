@@ -6,6 +6,8 @@ import { CV, BasicInfo, Experience } from "./cv.js";
 import Languages from "./Languages.jsx";
 import { SingleFileUploader } from "./fileUploader.jsx";
 import * as SC from "./CVForm.styles.js";
+import styled from "styled-components";
+import { H1 } from "./common/Text.js";
 
 function CVForm() {
   // State to manage the form fields and the list of skills
@@ -71,7 +73,7 @@ function CVForm() {
 
   return (
     <SC.CVFormContainer>
-      <h1>CV Information</h1>
+      <H1>CV Information</H1>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -184,3 +186,4 @@ function CVForm() {
 }
 
 export default CVForm;
+
