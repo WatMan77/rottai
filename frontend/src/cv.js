@@ -5,6 +5,7 @@ class CV {
    * @param {string} name - The name of the person.
    * @param {number} age - The age of the person.
    * @param {string} email - Optional email address of the person.
+   * @param {string} phone - Phone number of the person.
    * @param {BasicInfo} basics
    */
     constructor(basics, exp) {
@@ -14,13 +15,13 @@ class CV {
 }
 
 class BasicInfo {
-    constructor(name, age, email, profile, address) {
+    constructor(name, age, email, profile, address, phone) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.address = address;
-
         this.profile = profile;
+        this.phone = phone;
     }
 }
 /**

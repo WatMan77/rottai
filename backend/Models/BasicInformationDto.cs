@@ -14,4 +14,6 @@ public class BasicInformationDto
     public string Profile { get; init; } = string.Empty;
     [JsonPropertyName("address")]
     public string Address { get; init; } = string.Empty;
+    [JsonPropertyName("phone")]
+    public string Phone { get; init; } = string.Empty;
 }
