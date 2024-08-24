@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CustomInput } from "./common/Text";
+import { CustomInput } from "./common/Inputs";
 
 function Phone({ phone, setPhone }) {
   const [curPhoneBuf, setCurBuf] = useState("");
